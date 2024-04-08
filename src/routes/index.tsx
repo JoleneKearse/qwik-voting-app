@@ -1,10 +1,17 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { useAuthSession } from "~/routes/plugin@auth";
 
-import header from "~/components/starter/header/header";
+// import Header from "~/components/starter/header"
 
 export default component$(() => {
-  return <></>;
+  const session = useAuthSession();
+
+  return (
+    <>
+      <div>Email: {session.value?.user?.email}</div>
+    </>
+  );
 });
 
 export const head: DocumentHead = {
